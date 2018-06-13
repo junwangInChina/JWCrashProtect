@@ -20,6 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    NSArray *tempArray1 = @[];
+    NSLog(@"%@",tempArray1[1]);
+    
     NSMutableArray *tempArray = [NSMutableArray arrayWithArray:@[@"1",@"2",@"3",@"4"]];
     
     NSLog(@"%@",tempArray[100]);

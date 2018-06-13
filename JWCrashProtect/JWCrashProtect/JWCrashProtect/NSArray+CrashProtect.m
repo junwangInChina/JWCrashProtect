@@ -25,6 +25,10 @@
             // 越界崩溃方式一：arr[1000];
             [objc_getClass("__NSArrayI") swizzleSelector:@selector(objectAtIndexedSubscript:)
                                     withSwizzledSelector:@selector(jw_safeObjectAtIndexedSubscript:)];
+            
+            // 空数组保护
+            [objc_getClass("__NSArray0") swizzleSelector:@selector(objectAtIndex:)
+                                    withSwizzledSelector:@selector(jw_safeEmptyObjectAtIndex:)];
         }
     });
 }
@@ -51,6 +55,11 @@
     {
         return [self jw_safeObjectAtIndexedSubscript:index];
     }
+}
+
+- (instancetype)jw_safeEmptyObjectAtIndex:(NSUInteger)index
+{
+    return nil;
 }
 
 @end
